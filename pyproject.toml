@@ -1,0 +1,23 @@
+[project]
+name = "transformer-arch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "cedric", email = "cdricw3l@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "jupyter>=1.1.1",
+    "numpy>=2.5.4",
+    "pydantic>=2.14.1",
+    "safetensors>=0.8.0",
+    "tiktoken>=0.14.0",
+]
+
+[project.scripts]
+transformer-arch = "transformer_arch:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"

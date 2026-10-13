@@ -1,0 +1,13 @@
+h.2.attn.bias
+h.2.attn.c_attn.bias
+h.2.attn.c_attn.weight
+h.2.attn.c_proj.bias
+h.2.attn.c_proj.weight
+h.2.ln_1.bias
+h.2.ln_1.weight
+h.2.ln_2.bias
+h.2.ln_2.weight
+h.2.mlp.c_fc.bias
+h.2.mlp.c_fc.weight
+h.2.mlp.c_proj.bias
+h.2.mlp.c_proj.weight
