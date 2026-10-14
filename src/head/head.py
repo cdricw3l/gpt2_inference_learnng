@@ -3,6 +3,7 @@ from enum import Enum
 import numpy as np
 from safetensors import safe_open
 from llm_config import LLM_Config
+from torch import Tensor
 
 class WrongHead(Exception):
     def __init__(self, msg = "Wrong head id, choose value between 0 and 11"):
@@ -50,13 +51,18 @@ class Head(Head_matrix):
         self.mlp_c_proj_bias = f"h.{id}.mlp.c_proj.bias"
         self.mlp_c_proj_weight = f"h.{id}.mlp.c_proj.weight"
     
-    def get_matrice(self, matrice: str) -> np.ndarray:
+    def get_matrice(self, matrice: str, framework) -> np.ndarray | Tensor:
         try:
-            with safe_open(self.tensor_path, framework="np") as f:
+            with safe_open(self.tensor_path, framework=framework) as f:
                 tensor = f.get_tensor(matrice)
                 return tensor
         except Exception as e:
             print(f"Errors: {e}")
+    
+    @staticmethod
+    def get_matrice_len(matrice: np.ndarray | Tensor) -> None:
+        print(f"Matrix height: {len(matrice)} Matrix width: {len(matrice[0])}")
+
 
     def __str__(self):
         return f"Head: {self.id}\n{self.attn_bias}\n{self.attn_c_attn_bias}\n{self.attn_c_attn_weight}\n\
